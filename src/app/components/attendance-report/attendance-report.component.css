@@ -1,0 +1,13 @@
+.dropdown-toggle {
+    background-color: #343a40; /* Dark background to match the table header */
+    color: white; /* Text color */
+  }
+  
+  .dropdown-item {
+    color: #343a40; /* Dark text for dropdown items */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f8f9fa; /* Light background on hover */
+  }
+  

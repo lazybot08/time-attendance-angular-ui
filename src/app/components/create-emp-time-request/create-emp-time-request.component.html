@@ -1,0 +1,73 @@
+<div class="container-fluid px-0 py-0">
+    <div>
+      <div class="d-flex justify-content-center mt-5">
+        <div class="card mb-3" style="width: 26rem">
+          <div class="card-body">
+            <div class="text-center">
+              <h4 class="card-title mb-3">Time Off Request</h4>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="timeOffDate" class="form-label">Time Off Date:</label>
+                <span class="text-danger">*</span>
+                <input
+                  type="date"
+                  id="timeOffDate"
+                  class="form-control"
+                  formControlName="timeOffDate"
+                />
+              </div>
+  
+              <div class="mb-3">
+                <label for="startTime" class="form-label">Start Time:</label>
+                <span class="text-danger">*</span>
+                <input
+                  type="time"
+                  id="startTime"
+                  class="form-control"
+                  formControlName="startTime"
+                  required
+                />
+              </div>
+  
+              <div class="mb-3">
+                <label for="endTime" class="form-label">End Time:</label>
+                <span class="text-danger">*</span>
+                <input
+                  type="time"
+                  id="endTime"
+                  class="form-control"
+                  formControlName="endTime"
+                  required
+                />
+              </div>
+  
+              <div class="mb-3">
+                <label for="requestReason" class="form-label"
+                  >Leave Reason:</label
+                >
+                <span class="text-danger">*</span>
+                <textarea
+                  id="requestReason"
+                  class="form-control"
+                  formControlName="requestReason"
+                  rows="3"
+                ></textarea>
+              </div>
+  
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="btn btn-success btn-sm w-50"
+                  [disabled]="form.invalid"
+                >
+                  Submit Request
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

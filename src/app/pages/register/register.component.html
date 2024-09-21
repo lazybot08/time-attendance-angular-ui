@@ -1,0 +1,310 @@
+<div class="container-fluid px-0 py-0">
+  <app-layout></app-layout>
+  <div class="d-flex justify-content-center mt-3">
+    <div class="card mb-3" style="width: 26rem">
+      <div class="card-body">
+        <div class="text-center">
+          <h4 class="card-title mb-3">Register</h4>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="firstName"
+              placeholder="First Name"
+            />
+            <div
+              *ngIf="
+                form.get('firstName')?.invalid &&
+                (form.get('firstName')?.dirty || form.get('firstName')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('firstName')?.errors?.['required']">
+                First Name is required.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="lastName"
+              placeholder="Last Name"
+            />
+            <div
+              *ngIf="
+                form.get('lastName')?.invalid &&
+                (form.get('lastName')?.dirty || form.get('lastName')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('lastName')?.errors?.['required']">
+                Last Name is required.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="Email"
+              (blur)="onBlur('email')"
+            />
+            <div
+              *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+              class="text-danger"
+            >
+              <div *ngIf="form.get('email')?.errors?.['required']">
+                Email is required.
+              </div>
+              <div *ngIf="form.get('email')?.errors?.['email']">
+                Please enter a valid email address.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+              placeholder="Password"
+              (blur)="onBlur('password')"
+            />
+            <div
+              *ngIf="
+                form.get('password')?.invalid && form.get('password')?.touched
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('password')?.errors?.['required']">
+                Password is required.
+              </div>
+              <div *ngIf="form.get('password')?.errors?.['pattern']">
+                Password must include at least one uppercase letter, one
+                lowercase letter, one number, and one special character.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label"
+              >Confirm Password:</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              formControlName="confirmPassword"
+              placeholder="Confirm Password"
+              (blur)="onBlur('confirmPassword')"
+            />
+            <div
+              *ngIf="
+                form.get('confirmPassword')?.touched &&
+                form.get('confirmPassword')?.invalid
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('confirmPassword')?.errors?.['required']">
+                Confirm Password is required.
+              </div>
+              <div
+                *ngIf="
+                form.get('confirmPassword')?.errors?.['mismatch'] &&
+                form.get('confirmPassword')?.value
+              "
+              >
+                Passwords do not match.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="mobile" class="form-label">Mobile:</label>
+            <input
+              id="mobile"
+              type="tel"
+              class="form-control"
+              formControlName="mobile"
+              placeholder="Mobile"
+              (blur)="onBlur('mobile')"
+            />
+            <div
+              *ngIf="form.get('mobile')?.touched && form.get('mobile')?.invalid"
+              class="text-danger"
+            >
+              <div *ngIf="form.get('mobile')?.errors?.['required']">
+                Mobile number is required.
+              </div>
+              <div *ngIf="form.get('mobile')?.errors?.['pattern']">
+                Please enter a valid 10-digit mobile number.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="birthDate" class="form-label">Birth Date:</label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="birthDate"
+              placeholder="Birth Date"
+            />
+            <div
+              *ngIf="
+                form.get('birthDate')?.invalid &&
+                (form.get('birthDate')?.dirty || form.get('birthDate')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('birthDate')?.errors?.['required']">
+                Birth Date is required.
+              </div>
+              <div *ngIf="form.get('birthDate')?.errors?.['futureDate']">
+                Birth Date cannot be in the future.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Gender:</label>
+            <select class="form-control" formControlName="gender">
+              <option value="" disabled>Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="preferNotToSay">Prefer not to say</option>
+              <option value="other">Other</option>
+            </select>
+            <div
+              *ngIf="
+                form.get('gender')?.invalid &&
+                (form.get('gender')?.dirty || form.get('gender')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('gender')?.errors?.['required']">
+                Gender is required.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address:</label>
+            <textarea
+              class="form-control"
+              formControlName="address"
+              placeholder="Address"
+            ></textarea>
+            <div
+              *ngIf="
+                form.get('address')?.invalid &&
+                (form.get('address')?.dirty || form.get('address')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('address')?.errors?.['required']">
+                Address is required.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="designation" class="form-label">Designation:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="designation"
+              placeholder="Designation"
+            />
+            <div
+              *ngIf="
+                form.get('designation')?.invalid &&
+                (form.get('designation')?.dirty ||
+                  form.get('designation')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('designation')?.errors?.['required']">
+                Designation is required.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="department" class="form-label">Department:</label>
+            <select class="form-control" formControlName="department">
+              <option value="" disabled>Select Department</option>
+              <option value="HR">HR</option>
+              <option value="IT">IT</option>
+              <option value="Finance">Finance</option>
+              <option value="Sales">Sales</option>
+              <option value="Marketing">Marketing</option>
+            </select>
+            <div
+              *ngIf="
+                form.get('department')?.invalid &&
+                (form.get('department')?.dirty ||
+                  form.get('department')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('department')?.errors?.['required']">
+                Department is required.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="managerId" class="form-label">Manager ID:</label>
+            <select class="form-control" formControlName="managerId">
+              <option value="" disabled>Select Manager ID</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+            <div
+              *ngIf="
+                form.get('managerId')?.invalid &&
+                (form.get('managerId')?.dirty || form.get('managerId')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('managerId')?.errors?.['required']">
+                Manager ID is required.
+              </div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="hireDate" class="form-label">Date of Joining:</label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="hireDate"
+              placeholder="Date of Joining"
+            />
+            <div
+              *ngIf="
+                form.get('hireDate')?.invalid &&
+                (form.get('hireDate')?.dirty || form.get('hireDate')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="form.get('hireDate')?.errors?.['required']">
+                Hire Date is required.
+              </div>
+              <div *ngIf="form.get('hireDate')?.errors?.['futureDate']">
+                Hire Date cannot be in the future.
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+              type="submit"
+              class="btn btn-success btn-sm w-50"
+              [disabled]="form.invalid"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

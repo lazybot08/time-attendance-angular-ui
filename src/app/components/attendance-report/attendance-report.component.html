@@ -1,0 +1,37 @@
+<div class="container mt-4">
+    <div class="dropdown mb-3">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter by: Last One {{ currentPeriod === 'week' ? 'Week' : currentPeriod === 'month' ? 'Month' : 'Three Months' }}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" (click)="filterAttendance('week')">Last One Week</a></li>
+        <li><a class="dropdown-item" (click)="filterAttendance('month')">Last One Month</a></li>
+        <li><a class="dropdown-item" (click)="filterAttendance('threeMonths')">Last Three Months</a></li>
+      </ul>
+    </div>
+  
+    <table class="table table-bordered">
+      <thead class="bg-dark">
+        <tr>
+          <th scope="col" class="fw-bold text-white">Employee Id</th>
+          <th scope="col" class="fw-bold text-white">Name</th>
+          <th scope="col" class="fw-bold text-white">Total Hours</th>
+          <th scope="col" class="fw-bold text-white">Net Hours</th>
+          <th scope="col" class="fw-bold text-white">Overtime Hours</th>
+          <th scope="col" class="fw-bold text-white">Actions</th> <!-- New column for actions -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of empReportList; let i = index">
+          <td scope="row">{{ emp.empId }}</td>
+          <td>{{ emp.empName }}</td>
+          <td>{{ emp.totalWorkHours }}</td>
+          <td>{{ emp.totalNetHours }}</td>
+          <td>{{ emp.totalOvertimeHours }}</td>
+          <td>
+            <button class="btn btn-sm btn-info" [routerLink]="['/dashboard/daily-logs', emp.empId]">View Daily Logs</button>
+          </td>          
+        </tr>
+      </tbody>
+    </table>
+  </div>  

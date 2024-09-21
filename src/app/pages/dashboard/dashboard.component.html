@@ -1,0 +1,59 @@
+<div class="container-fluid px-0 py-0">
+  <app-layout [user]="user"></app-layout>
+
+  <!-- Dashboard -->
+  <div class="d-flex flex-column flex-lg-row bg-light" style="min-height: 100vh;">
+    <!-- Vertical Navbar -->
+    <nav class="sidebar navbar-expand-sm bg-dark text-white border-end col-2">
+      <div class="d-flex flex-column h-100">
+        
+        <!-- Navbar Brand -->
+        <div class="d-flex justify-content-center align-items-center mb-4 flex-column">
+          <h1 class="navbar-brand mb-0 text-center fs-3 fw-bold cursor-pointer" routerLink="dashboard">
+            <i class="bi bi-house-door me-3"></i> Dashboard
+          </h1>
+        </div>
+
+        <!-- Navigation -->
+        <ul *ngIf="userRole==='ROLE_MANAGER'" class="navbar-nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="employee-details" routerLinkActive="active">
+              <i class="bi bi-bar-chart me-2"></i> Employee Details
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="attendance-report" routerLinkActive="active">
+              <i class="bi bi-bar-chart me-2"></i> Attendance Report
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="manager-leave-requests" routerLinkActive="active">
+              <i class="bi bi-chat me-2"></i> Leave Requests
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="manager-time-requests" routerLinkActive="active">
+              <i class="bi bi-bookmarks me-2"></i> Time Off Requests
+            </a>
+          </li>
+        </ul>
+        <ul *ngIf="userRole==='ROLE_EMPLOYEE'" class="navbar-nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="employee-leave-requests" routerLinkActive="active">
+              <i class="bi bi-chat me-2"></i> Leave Requests
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="employee-time-requests" routerLinkActive="active">
+              <i class="bi bi-bookmarks me-2"></i> Time Off Requests
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-10 p-4">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

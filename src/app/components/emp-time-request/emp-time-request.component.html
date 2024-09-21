@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Time Off Requests</h2>
+    <a routerLink="/dashboard/create-employee-time-request" class="btn btn-primary">Create New Request</a>
+</div>
+
+<table class="table table-bordered">
+    <thead class="bg-dark">
+        <tr>
+            <th scope="col" class="fw-bold text-white">S.No.</th>
+            <th scope="col" class="fw-bold text-white">Reason</th>
+            <th scope="col" class="fw-bold text-white">Time Off Date</th>
+            <th scope="col" class="fw-bold text-white">From</th>
+            <th scope="col" class="fw-bold text-white">To</th>
+            <th scope="col" class="fw-bold text-white">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let timeOff of timeOffList; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ timeOff.requestReason }}</td>
+            <td>{{ timeOff.timeOffDate }}</td>
+            <td>{{ timeOff.startTime }}</td>
+            <td>{{ timeOff.endTime }}</td>
+            <td>{{ timeOff.status }}</td>
+        </tr>
+    </tbody>
+</table>

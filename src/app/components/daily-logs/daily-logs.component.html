@@ -1,0 +1,92 @@
+<div class="container mt-4">
+  <h3 class="text-center mb-4">Daily Logs for Employee ID: {{ empId }}</h3>
+
+  <!-- Filter Section -->
+  <div class="filter-container mb-4">
+    <div class="row mb-3">
+      <div class="col">
+        <label for="fromDate">From Date:</label>
+        <input
+          type="date"
+          id="fromDate"
+          class="form-control"
+          [(ngModel)]="fromDate"
+        />
+      </div>
+      <div class="col">
+        <label for="toDate">To Date:</label>
+        <input
+          type="date"
+          id="toDate"
+          class="form-control"
+          [(ngModel)]="toDate"
+        />
+      </div>
+      <div class="col d-flex align-items-end">
+        <button class="btn btn-primary me-2" (click)="filterByDate()">
+          Filter
+        </button>
+        <button class="btn btn-secondary me-2" (click)="clearDate()">
+          Clear
+        </button>
+        <button
+          class="btn btn-success"
+          [routerLink]="['/dashboard/attendance-report']"
+        >
+          Go Back
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <table class="table table-bordered text-center mb-3">
+    <thead class="bg-dark">
+      <tr>
+        <th scope="col" class="fw-bold text-white">S.No.</th>
+        <th scope="col" class="fw-bold text-white">Work Date</th>
+        <th scope="col" class="fw-bold text-white">Clock In Time</th>
+        <th scope="col" class="fw-bold text-white">Clock Out Time</th>
+        <th scope="col" class="fw-bold text-white">Work Hours</th>
+        <th scope="col" class="fw-bold text-white">Net Hours</th>
+        <th scope="col" class="fw-bold text-white">Overtime Hours</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of dailyLogReport; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ log.workDate | date : "dd-MM-yyyy" }}</td>
+        <td>{{ log.clockInTime.substring(0, 8) }}</td>
+        <td>{{ log.clockOutTime.substring(0, 8) }}</td> 
+        <td>{{ log.workHours }}</td>
+        <td>{{ log.netHours }}</td>
+        <td>{{ log.overtimeHours }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 0">
+        <a class="page-link" (click)="loadDailyLogs(currentPage - 1)"
+          >Previous</a
+        >
+      </li>
+      <li
+        class="page-item"
+        *ngFor="let page of [].constructor(totalPages()); let i = index"
+      >
+        <a
+          class="page-link"
+          (click)="loadDailyLogs(i)"
+          [class.active]="currentPage === i"
+          >{{ i + 1 }}</a
+        >
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages() - 1">
+        <a class="page-link" (click)="loadDailyLogs(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>

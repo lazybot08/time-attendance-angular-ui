@@ -1,0 +1,142 @@
+<div class="container-fluid fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
+    <div class="card shadow-sm rounded-lg">
+      <div class="card-body">
+  
+        <h3 class="card-title mb-4 text-primary text-center">Profile</h3>
+        <div class="row g-3">
+          <!-- Employee ID -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>Employee ID</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+             {{user.empId}}
+            </div>
+          </div>
+  
+          <!-- First Name -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>First Name</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+                {{user.firstName}}
+            </div>
+          </div>
+  
+          <!-- Last Name -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>Last Name</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+                {{user.lastName}}
+            </div>
+          </div>
+  
+          <!-- Email -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>Email</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+                {{user.email}}
+            </div>
+          </div>
+  
+          <!-- Mobile -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>Mobile</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+                +91-{{user.mobile}}
+            </div>
+          </div>
+  
+          <!-- Date of Birth -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>Date of Birth</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+                {{user.birthDate | date: 'dd-MM-yyyy'}}
+            </div>
+          </div>
+  
+          <!-- Gender -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>Gender</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+                {{user.gender}}
+            </div>
+          </div>
+  
+          <!-- Address -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>Address</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+                {{user.address}}
+            </div>
+          </div>
+  
+          <!-- Designation -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>Designation</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+                {{user.designation}}
+            </div>
+          </div>
+  
+          <!-- Department -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>Department</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+                {{user.department}}
+            </div>
+          </div>
+  
+          <!-- Date of Joining -->
+          <div class="col-md-4">
+            <div class="bg-light border rounded p-2">
+              <strong>Date of Joining</strong>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="bg-light border rounded p-2">
+                {{user.hireDate | date: 'dd-MM-yyyy'}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

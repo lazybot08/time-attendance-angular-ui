@@ -1,0 +1,8 @@
+.table-responsive {
+    margin: 0 auto; /* Center the table */
+  }
+  
+  .table {
+    width: 100%; /* Ensure table takes full width */
+  }
+  

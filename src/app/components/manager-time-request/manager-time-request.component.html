@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Time Off Requests</h2>
+</div>
+
+<table class="table table-bordered">
+    <thead class="bg-dark">
+        <tr>
+            <th scope="col" class="fw-bold text-white">Employee Id</th>
+            <th scope="col" class="fw-bold text-white">Employee Name</th>
+            <th scope="col" class="fw-bold text-white">Time Off Date</th>
+            <th scope="col" class="fw-bold text-white">From</th>
+            <th scope="col" class="fw-bold text-white">To</th>
+            <th scope="col" class="fw-bold text-white">Reason</th>
+            <th scope="col" class="fw-bold text-white">Action/Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let timeOff of timeOffList">
+            <td>{{ timeOff.empId }}</td>
+            <td>{{ timeOff.empName }}</td>
+            <td>{{ timeOff.timeOffDate }}</td>
+            <td>{{ timeOff.startTime }}</td>
+            <td>{{ timeOff.endTime }}</td>
+            <td>{{ timeOff.requestReason }}</td>
+            <td>
+                <ng-container *ngIf="timeOff.status === 'PENDING'; else statusTemplate">
+                    <button class="btn btn-success btn-sm me-1" (click)="updateStatus(timeOff.requestId, 'accepted')">Accept</button>
+                    <button class="btn btn-danger btn-sm" (click)="updateStatus(timeOff.requestId, 'rejected')">Reject</button>
+                </ng-container>
+                <ng-template #statusTemplate>
+                    {{ timeOff.status }}
+                </ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>

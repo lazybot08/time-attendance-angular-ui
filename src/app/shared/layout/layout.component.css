@@ -1,0 +1,19 @@
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+.navbar {
+    padding: 0.5rem 1rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    margin: 0 0.5rem;
+  }
+  
+  .nav-link.active {
+    font-weight: 500;
+  }
+  
