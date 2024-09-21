@@ -50,6 +50,8 @@ export class AuthService {
       (response) => {
         localStorage.removeItem(LocalStorage.token);
         localStorage.removeItem(LocalStorage.role);
+        localStorage.removeItem(LocalStorage.empId);
+        localStorage.removeItem(LocalStorage.managerId);
         this.isLoggedIn.update(() => false);
         this.router.navigate(['login']);
       });
